@@ -1,0 +1,43 @@
+const mongoose = require("mongoose");
+
+const documentSchem = new mongoose.Schema({
+  Importer: String,
+  Email: String,
+  Entity: {
+    License_NO: Number,
+    Qty: Number,
+  },
+  Port: String,
+  JobNo: Number,
+  MBL_No: Number,
+  MBL_date: Date,
+  HBL_No: Number,
+  HBL_date: Date,
+  Shipping_Line: String,
+  ETA_date: Date,
+  LCLorFCL: String,
+  Qty: Number,
+  Description: String,
+  License_No: Number,
+  Invoice_No: Number,
+  IGM_No: Number,
+  IGM_date: Date,
+  Item_No: Number,
+  Inward_Date: Date,
+  BE_no: Number,
+  Date: Date,
+  CFS: String,
+  Customs_Duty_Paid: Boolean,
+  Planning_Date: Date,
+  DateOfDelivery: Date,
+  BillingDone: Boolean,
+  Mode: String,
+  UPI_Number: Number,
+  Bill_Amount: Number,
+  TDS_details: Number,
+  Amount: Number,
+  Remarks: String,
+  isOnHold: Boolean,
+});
+const document = mongoose.model("document", documentSchem);
+module.exports = document;
