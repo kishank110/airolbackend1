@@ -1,6 +1,5 @@
 const documentModel = require("../models/Document");
 
-const ApiFeatures = require("../utils/ApiFeatures");
 const sortByHBL_No = async (req, res) => {
   const result = await documentModel.find({}).sort({ HBL_No: 1 });
   res.json(result);

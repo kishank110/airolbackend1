@@ -13,5 +13,5 @@ router.route("/getClientById/:id").get(getClientById);
 router.route("/getClient").get(getClient);
 router.route("/reports/sortByClientName").get(sortByClientName);
 router.route("/updateClientById/:id").put(updateClientById);
-router.route("/deleteClientById/:id").put(deleteClientById);
+router.route("/deleteClientById/:id").delete(deleteClientById);
 module.exports = router;

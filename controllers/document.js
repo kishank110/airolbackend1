@@ -1,11 +1,10 @@
 const documentModel = require("../models/Document");
-const ApiFeatures = require("../utils/ApiFeatures");
+
 const createDocument = async (req, res) => {
   try {
     const {
       Importer,
       Email,
-      License_NO,
       Entity,
       Port,
       JobNo,
@@ -42,7 +41,6 @@ const createDocument = async (req, res) => {
     const doc = await documentModel.create({
       Importer,
       Email,
-      License_NO,
       Entity,
       Port,
       JobNo,
@@ -118,45 +116,45 @@ const deleteDocumentById = async (req, res) => {
 };
 const updateDocumentById = async (req, res) => {
   await documentModel
-    .updateOne(req.params.id, {
-      Importer: req.body.Importer,
-      Email: req.body.Email,
-      Entity: {
-        License_NO: req.body.License_NO,
+    .updateOne(
+      { _id: req.params.id },
+      {
+        Importer: req.body.Importer,
+        Email: req.body.Email,
+        Entity: req.body.Entity,
+        Port: req.body.Port,
+        JobNo: req.body.JobNo,
+        MBL_No: req.body.MBL_No,
+        MBL_date: req.body.MBL_date,
+        HBL_No: req.body.HBL_No,
+        HBL_date: req.body.HBL_date,
+        Shipping_Line: req.body.Shipping_Line,
+        ETA_date: req.body.ETA_date,
+        LCLorFCL: req.body.LCLorFCL,
         Qty: req.body.Qty,
-      },
-      Port: req.body.Port,
-      JobNo: req.body.JobNo,
-      MBL_No: req.body.MBL_No,
-      MBL_date: req.body.MBL_date,
-      HBL_No: req.body.HBL_No,
-      HBL_date: req.body.HBL_date,
-      Shipping_Line: req.body.Shipping_Line,
-      ETA_date: req.body.ETA_date,
-      LCLorFCL: req.body.LCLorFCL,
-      Qty: req.body.Qty,
-      Description: req.body.Description,
-      License_No: req.body.License_NO,
-      Invoice_No: req.body.Invoice_No,
-      IGM_No: req.body.IGM_No,
-      IGM_date: req.body.IGM_date,
-      Item_No: req.body.Item_No,
-      Inward_Date: req.body.Inward_Date,
-      BE_no: req.body.BE_no,
-      Date: req.body.Date,
-      CFS: req.body.CFS,
-      Customs_Duty_Paid: req.body.Customs_Duty_Paid,
-      Planning_Date: req.body.Planning_Date,
-      DateOfDelivery: req.body.DateOfDelivery,
-      BillingDone: req.body.BillingDone,
-      Mode: req.body.Mode,
-      UPI_Number: req.body.UPI_Number,
-      Bill_Amount: req.body.Bill_Amount,
-      TDS_details: req.body.TDS_details,
-      Amount: req.body.Amount,
-      Remarks: req.body.Remarks,
-      isOnHold: req.body.isOnHold,
-    })
+        Description: req.body.Description,
+        License_No: req.body.License_No,
+        Invoice_No: req.body.Invoice_No,
+        IGM_No: req.body.IGM_No,
+        IGM_date: req.body.IGM_date,
+        Item_No: req.body.Item_No,
+        Inward_Date: req.body.Inward_Date,
+        BE_no: req.body.BE_no,
+        Date: req.body.Date,
+        CFS: req.body.CFS,
+        Customs_Duty_Paid: req.body.Customs_Duty_Paid,
+        Planning_Date: req.body.Planning_Date,
+        DateOfDelivery: req.body.DateOfDelivery,
+        BillingDone: req.body.BillingDone,
+        Mode: req.body.Mode,
+        UPI_Number: req.body.UPI_Number,
+        Bill_Amount: req.body.Bill_Amount,
+        TDS_details: req.body.TDS_details,
+        Amount: req.body.Amount,
+        Remarks: req.body.Remarks,
+        isOnHold: req.body.isOnHold,
+      }
+    )
     .then((data) => {
       res.json(data);
     })

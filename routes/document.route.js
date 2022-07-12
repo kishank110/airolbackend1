@@ -10,12 +10,12 @@ const {
   sortByHBL_No,
   sortByCustomerName,
   sortByDOA,
-
   sortByDateAndHBL_No,
   sortByDateAndBE_no,
   sortByDateAndMBL_No,
   sortByDateAndLicense_No,
   sortByDateAndIGM_No,
+  sortByMBL_No,
 } = require("../controllers/reports");
 const {
   docToday,
@@ -39,6 +39,7 @@ router.route("/updateDocumentById/:id").put(updateDocumentById);
 router.route("/reports/sortByDOA").get(sortByDOA);
 router.route("/reports/sortByCustomerName").get(sortByCustomerName);
 router.route("/reports/sortByHBL_No").get(sortByHBL_No);
+router.route("/reports/sortByMBL_No").get(sortByMBL_No);
 router.route("/reports/sortByDateAndHBL_No").get(sortByDateAndHBL_No);
 router.route("/reports/sortByDateAndBE_no").get(sortByDateAndBE_no);
 router.route("/reports/sortByDateAndMBL_No").get(sortByDateAndMBL_No);

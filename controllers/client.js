@@ -38,28 +38,21 @@ const createClient = async (req, res) => {
 
 const updateClientById = async (req, res) => {
   await clientModel
-    .updateOne({
-      ImporterName: req.body.ImporterName,
-      IEC_NO: req.body.IEC_NO,
-      Address: {
-        LINE1: req.body.LINE1,
-        LINE2: req.body.LINE2,
-        Branch_Code: req.body.Branch_Code,
-      },
-      GST_No: req.body.GST_No,
-      PAN_No: req.body.PAN_No,
-      Contact_Person: [
-        {
-          Name: req.body.Name,
-          Email: req.body.Email,
-          Phone_Number: req.body.Phone_Number,
-        },
-      ],
-      Licence_No: req.body.Licence_No,
-      Qty: req.body.Qty,
-      Description_Details: req.body.Description_Details,
-      Remark: req.body.Remark,
-    })
+    .updateOne(
+      { _id: req.params.id },
+      {
+        ImporterName: req.body.ImporterName,
+        IEC_NO: req.body.IEC_NO,
+        Address: req.body.Address,
+        GST_No: req.body.GST_No,
+        PAN_No: req.body.PAN_No,
+        Contact_Person: req.body.Contact_Person,
+        Licence_No: req.body.Licence_No,
+        Qty: req.body.Qty,
+        Description_Details: req.body.Description_Details,
+        Remark: req.body.Remark,
+      }
+    )
     .then((data) => {
       res.json(data);
     })
@@ -114,5 +107,4 @@ module.exports = {
   getClientById,
   getClient,
   sortByClientName,
-  
 };
